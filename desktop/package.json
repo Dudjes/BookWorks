@@ -8,7 +8,7 @@
     "dev": "concurrently -k \"npm:dev:ui\" \"npm:dev:electron:build\" \"npm:dev:electron\"",
     "dev:ui": "vite --port 5173",
     "dev:electron:build": "tsc -p tsconfig.electron.json --watch --preserveWatchOutput",
-    "dev:electron": "wait-on file:./dist-electron/main.cjs && cross-env NODE_ENV=development electron .",
+    "dev:electron": "wait-on file:./dist-electron/main.cjs http://localhost:5173 && cross-env NODE_ENV=development electron ./dist-electron/main.cjs",
     "build:electron": "tsc -p tsconfig.electron.json",
     "build": "npm run build:electron && vite build && electron-builder",
     "preview": "vite preview --port 4173"

@@ -1,5 +1,5 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Auth from "./pages/auth";
+import Auth from "./pages/Auth";
 import Invoices from "./pages/invoices";
 
 export default function App() {

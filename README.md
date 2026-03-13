@@ -26,10 +26,3 @@ npm run dev
 
 Desktop dev uses `http://localhost:5173` and compiles Electron main/preload into `desktop/dist-electron` automatically.
 If startup fails, free port `5173` and rerun `npm run dev:desktop`.
-
-## TODO
-
-- [ ] Database setup (SQLite/PostgreSQL)
-- [ ] Migrations
-- [ ] API endpoints
-- [ ] UI pages
