@@ -57,6 +57,7 @@ const createWindow = () => {
 type IpcHandler = (...args: any[]) => unknown;
 const handlers: Record<string, IpcHandler> = {
   "auth:registerUser": auth.registerUser,
+  "auth:loginUser": auth.loginUser,
 };
 
 for (const [channel, handler] of Object.entries(handlers)) {

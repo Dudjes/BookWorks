@@ -6,7 +6,7 @@ datasource db {
   provider = "sqlite"
 }
 
-model Customer {
+model User {
   userID     Int       @id @default(autoincrement())
   username   String
   password   String

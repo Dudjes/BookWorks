@@ -200,8 +200,19 @@
   box-shadow: 0 0 0 3px rgba(26, 26, 138, 0.15);
 }
 
+.formInfo input.inputError {
+  border-color: #dc2626;
+  box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.12);
+}
+
 .formInfo input::placeholder {
   color: #9aa3b2;
+}
+
+.fieldError {
+  margin: 0.15rem 0 0;
+  font-size: 0.85rem;
+  color: #dc2626;
 }
 
 .passwordField {

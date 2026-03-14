@@ -1,5 +1,6 @@
 type IpcChannel = 
     | "auth:registerUser"
+  | "auth:loginUser"
     | "";
 
 interface Window {
