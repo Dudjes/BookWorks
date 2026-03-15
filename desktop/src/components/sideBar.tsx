@@ -1,0 +1,62 @@
+
+import { NavLink } from "react-router-dom";
+import {
+    FiGrid,
+    FiFileText,
+    FiUsers,
+    FiDownload,
+    FiUpload,
+    FiRepeat,
+    FiPercent,
+    FiBarChart2,
+    FiBookOpen,
+    FiSettings,
+} from "react-icons/fi";
+
+type SideBarPage = {
+    label: string;
+    link: string;
+    icon: JSX.Element;
+};
+
+export default function SideBar() {
+    const pages: SideBarPage[] = [
+        { label: "Dashboard", link: "/", icon: <FiGrid size={18} /> },
+        { label: "Verkoopfacturen", link: "/invoices", icon: <FiFileText size={18} /> },
+        { label: "Debiteuren", link: "/", icon: <FiUsers size={18} /> },
+        { label: "Inkoopfacturen", link: "/", icon: <FiDownload size={18} /> },
+        { label: "Crediteuren", link: "/", icon: <FiUpload size={18} /> },
+        { label: "Transacties", link: "/", icon: <FiRepeat size={18} /> },
+        { label: "BTW-Aangifte", link: "/", icon: <FiPercent size={18} /> },
+        { label: "Rapportages", link: "/", icon: <FiBarChart2 size={18} /> },
+        { label: "Grootboek", link: "/", icon: <FiBookOpen size={18} /> },
+        { label: "Instellingen", link: "/", icon: <FiSettings size={18} /> },
+    ];
+
+    return (
+        <aside className="sidebar" aria-label="Hoofd navigatie">
+            <div className="sidebar__brand">
+                <h1>BookWorks</h1>
+                <p>Boekhoudapplicatie</p>
+            </div>
+
+            <nav className="sidebar__nav">
+                {pages.map((page) => (
+                    <NavLink
+                        key={page.label}
+                        to={page.link}
+                        className={({ isActive }) =>
+                            isActive ? "sidebar__link sidebar__link--active" : "sidebar__link"
+                        }
+                        title={page.label}
+                    >
+                        <span className="sidebar__icon" aria-hidden="true">
+                            {page.icon}
+                        </span>
+                        <span>{page.label}</span>
+                    </NavLink>
+                ))}
+            </nav>
+        </aside>
+    );
+}
