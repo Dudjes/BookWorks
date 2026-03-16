@@ -35,7 +35,7 @@ export default function SideBar() {
         { label: "BTW-Aangifte", link: "/", icon: <FiPercent size={18} /> },
         { label: "Rapportages", link: "/", icon: <FiBarChart2 size={18} /> },
         { label: "Grootboek", link: "/", icon: <FiBookOpen size={18} /> },
-        { label: "Instellingen", link: "/", icon: <FiSettings size={18} /> },
+        { label: "Instellingen", link: "/settings", icon: <FiSettings size={18} /> },
     ];
 
     const handleLogout = () => {

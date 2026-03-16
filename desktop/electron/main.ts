@@ -4,6 +4,7 @@ import { fileURLToPath } from "url";
 import { existsSync } from "fs";
 import { ensureDatabaseSchema } from "./database.js";
 import * as auth from "./database/auth.js";
+import * as company from "./database/company.js";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -58,6 +59,22 @@ type IpcHandler = (...args: any[]) => unknown;
 const handlers: Record<string, IpcHandler> = {
   "auth:registerUser": auth.registerUser,
   "auth:loginUser": auth.loginUser,
+
+  //unwrap object payload { userId, company }
+  "company:createOrUpdate": (payload: {
+    userId: number;
+    company: {
+      name: string;
+      kvkNumber?: string;
+      btwNumber?: string;
+      address: string;
+      postcode: string;
+      city: string;
+      country: string;
+    };
+  }) => company.createOrUpdate(payload.userId, payload.company),
+
+  "company:getCompanyByUser": (userId: number) => company.getCompanyByUser(userId),
 };
 
 for (const [channel, handler] of Object.entries(handlers)) {

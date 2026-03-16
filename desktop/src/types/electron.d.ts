@@ -1,7 +1,8 @@
 type IpcChannel = 
-    | "auth:registerUser"
+  | "auth:registerUser"
   | "auth:loginUser"
-    | "";
+  | "company:createOrUpdate"
+  | "company:getCompanyByUser";
 
 interface Window {
   api?: {

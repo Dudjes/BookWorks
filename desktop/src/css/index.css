@@ -183,6 +183,16 @@ body {
   box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15);
 }
 
+.main-input__error {
+  color: red;
+  font-size: 0.8rem;
+  margin-top: 0.25rem;
+}
+
+.main-input__field--error {
+  border-color: red;
+}
+
 @media (max-width: 900px) {
   .debitor-form-grid {
     grid-template-columns: 1fr;

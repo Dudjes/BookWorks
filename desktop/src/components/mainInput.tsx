@@ -6,6 +6,7 @@ type MainInputProps = {
   onChangeText: (value: string) => void;
   type?: React.HTMLInputTypeAttribute;
   fullWidth?: boolean;
+  error?: string;
 };
 
 export default function MainInput({
@@ -16,24 +17,27 @@ export default function MainInput({
   onChangeText,
   type = "text",
   fullWidth = false,
+  error,
 }: MainInputProps) {
     // "Company Name" → "company-name"
     const inputId = label.toLowerCase().replace(/\s+/g, "-"); 
 
     return (
         <div className={`main-input ${fullWidth ? "main-input--full" : ""}`}>
-        <label className="main-input__label" htmlFor={inputId}>
-            {label} {required && <span className="main-input__required">*</span>}
-        </label>
+            <label className="main-input__label" htmlFor={inputId}>
+                {label} {required && <span className="main-input__required">*</span>}
+            </label>
 
-        <input
-            id={inputId}
-            className="main-input__field"
-            type={type}
-            placeholder={placeholder}
-            value={value}
-            onChange={(e) => onChangeText(e.target.value)}
-        />
+            <input
+                id={inputId}
+                className={`main-input__field ${error ? "main-input__field--error" : ""}`}
+                type={type}
+                placeholder={placeholder}
+                value={value}
+                onChange={(e) => onChangeText(e.target.value)}
+            />
+
+            {error && <span className="main-input__error">{error}</span>}
         </div>
     );
 }

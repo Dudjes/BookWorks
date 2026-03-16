@@ -1,5 +1,5 @@
 type UserSession = {
-  userID: number;
+  id: number;
   username: string;
   email: string;
   role: string;

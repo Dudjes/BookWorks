@@ -1,7 +1,7 @@
 import { createContext, useContext, useState, type ReactNode } from "react";
 
 type UserSession = {
-  userID: number;
+  id: number;
   username: string;
   email: string;
   role: string;
