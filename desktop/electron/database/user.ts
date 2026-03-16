@@ -1,7 +1,7 @@
 import { prisma } from "../database.js";
 
-export async function getUserById(userID: number) {
+export async function getUserById(id: number) {
 	return prisma.user.findUnique({
-		where: { userID },
+		where: { id },
 	});
 }

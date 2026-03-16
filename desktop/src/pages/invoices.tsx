@@ -1,24 +1,26 @@
 
-import { Navigate, useNavigate } from "react-router-dom";
+import { Navigate} from "react-router-dom";
 import { useUser } from "../context/UserContext.tsx";
+import styles from "../css/Invoice.module.css";
+import BaseHeader from "@/components/baseHeader.tsx";
 
 export default function Invoices(){
-    const navigate = useNavigate();
-    const { user, logout } = useUser();
+    const { user} = useUser();
 
     if (!user) {
         return <Navigate to="/" replace />;
     }
-
-    const handleLogout = () => {
-        logout();
-        navigate("/", { replace: true });
-    };
-
+    
     return(
         <div>
-            <p>Ingelogde userID: {user?.userID ?? "geen"}</p>
-            <button type="button" onClick={handleLogout}>Uitloggen</button>
+            <BaseHeader
+                title="Verkoopfacturen"
+                buttonText="Nieuwe klant"
+                searchPlaceholder="Zoek facturen..."
+                subtitle="Beheer en maak nieuwe klanten"
+                searchAriaLabel="Zoek facturen"
+            ></BaseHeader>
+            
         </div>
     )
 }

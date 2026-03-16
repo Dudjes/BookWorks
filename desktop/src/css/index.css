@@ -130,3 +130,66 @@ body {
   background-color: var(--color-primary-extra-light);
   
 }
+
+/* main input */
+
+.debitor-form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.main-input {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 0;
+}
+
+.main-input--full {
+  grid-column: 1 / -1;
+}
+
+.main-input__label {
+  font-size: 18px;
+  font-weight: 600;
+  color: #0f172a;
+  line-height: 1.2;
+}
+
+.main-input__required {
+  color: #dc2626;
+}
+
+.main-input__field {
+  width: 100%;
+  height: 44px;
+  padding: 0 14px;
+  border: 1px solid #d1d5db;
+  border-radius: 10px;
+  background: #fff;
+  color: #0f172a;
+  font-size: 16px;
+  outline: none;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.main-input__field::placeholder {
+  color: #9ca3af;
+}
+
+.main-input__field:focus {
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15);
+}
+
+@media (max-width: 900px) {
+  .debitor-form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .main-input--full {
+    grid-column: auto;
+  }
+}
+

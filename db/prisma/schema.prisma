@@ -7,11 +7,129 @@ datasource db {
 }
 
 model User {
-  userID     Int       @id @default(autoincrement())
+  id     Int       @id @default(autoincrement())
   username   String
   password   String
   email      String    @unique
   role       String
   created_at DateTime  @default(now())
   updated_at DateTime?
+
+  invoices Invoice[] @relation("CreatedInvoices")
+  userCompanies UserCompany[]
+}
+
+model Company{
+  id Int @id @default(autoincrement())
+  name String
+  kvkNumber String?
+  btwNumber String?
+
+  address String
+  postcode String
+  city String
+  country String
+
+  createdAt DateTime @default(now())
+
+  invoices Invoice[]
+  users UserCompany[]
+
+  relations Relation[]
+}
+
+model UserCompany{
+  id Int @id @default(autoincrement())
+
+  userId Int
+  companyId Int
+
+  user User @relation(fields: [userId], references: [id])
+  company Company @relation(fields: [companyId], references: [id])
+}
+
+model Invoice{
+  id     Int       @id @default(autoincrement())
+  invoiceNumber String @unique
+
+  companyId Int
+  relationId Int
+  createdById Int
+
+  description String
+
+  invoiceDate DateTime
+  dueDate DateTime
+
+  subTotal Decimal
+  vatTotal Decimal
+  total Decimal
+
+  status String
+
+  company Company @relation(fields: [companyId], references: [id])
+  createdBy User @relation("CreatedInvoices", fields: [createdById], references: [id])
+  relation Relation @relation(fields: [relationId], references: [id])
+
+  invoiceLines InvoiceLine[]
+}
+
+model InvoiceLine{
+  id Int @id @default(autoincrement())
+  invoiceId Int 
+  
+  description String
+  quantity Float
+  price Float
+
+  vat VAT
+  
+  lineTotalExcl Float
+  vatAmount Float
+  lineTotalIncl Float
+
+  invoice Invoice @relation(fields: [invoiceId], references: [id])
+}
+
+
+//debiteuren en crediteuren
+model Relation{
+  id Int @id @default(autoincrement())
+  companyId Int
+
+  companyName String
+  contactPerson String?
+  type RelationType
+
+  kvkNumber String?
+  btwNumber String?
+  IBAN String?
+  paymentTerm Int
+
+  email String
+  phonenumber String?
+
+  address String?
+  postcode String?
+  city String?
+  country String?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  company Company @relation(fields: [companyId], references: [id])
+  invoices Invoice[]
+}
+
+
+
+enum VAT {
+  VAT_0 @map("0")
+  VAT_9  @map("9%")
+  VAT_21 @map("21%")
+}
+
+enum RelationType{
+  DEBTOR @map("debitor")
+  CREDITOR @map("creditor")
 }

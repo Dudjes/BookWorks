@@ -16,7 +16,7 @@ console.log("Database location:", dbPath);
 export async function ensureDatabaseSchema() {
   await prisma.$executeRawUnsafe(`
     CREATE TABLE IF NOT EXISTS "User" (
-      "userID" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+      "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
       "username" TEXT NOT NULL,
       "password" TEXT NOT NULL,
       "email" TEXT NOT NULL,

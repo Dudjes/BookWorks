@@ -28,7 +28,7 @@ export default function SideBar() {
     const pages: SideBarPage[] = [
         { label: "Dashboard", link: "/", icon: <FiGrid size={18} /> },
         { label: "Verkoopfacturen", link: "/invoices", icon: <FiFileText size={18} /> },
-        { label: "Debiteuren", link: "/", icon: <FiUsers size={18} /> },
+        { label: "Debiteuren", link: "/debitors", icon: <FiUsers size={18} /> },
         { label: "Inkoopfacturen", link: "/", icon: <FiDownload size={18} /> },
         { label: "Crediteuren", link: "/", icon: <FiUpload size={18} /> },
         { label: "Transacties", link: "/", icon: <FiRepeat size={18} /> },

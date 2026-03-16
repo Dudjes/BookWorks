@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import Auth from "./pages/Auth";
 import Invoices from "./pages/invoices";
+import Debitors from "./pages/debitors";
 import { UserProvider } from "./context/UserContext.tsx";
 import SideBar from "./components/sideBar";
 
@@ -15,6 +16,7 @@ function AppShell() {
         <Routes>
           <Route path="/" element={<Auth />} />
           <Route path="/invoices" element={<Invoices />} />
+          <Route path="/debitors" element={<Debitors />} />
         </Routes>
       </main>
     </div>
